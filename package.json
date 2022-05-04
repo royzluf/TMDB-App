@@ -1,0 +1,21 @@
+{
+  "name": "tmdb-app",
+  "version": "1.0.0",
+  "description": "Movies Application based on the TMDB API",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.22.0",
+    "fractional": "^1.0.0",
+    "fracty": "^1.0.10",
+    "parcel": "^2.4.1",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.4.1"
+  }
+}
