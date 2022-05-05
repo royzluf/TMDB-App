@@ -60,11 +60,17 @@ const controlSearchResults = async function () {
   BookmarkView.update(model.getBookmarks());
 };
 
-const controlCleanResults = async function () {
+const controlClearResults = async function () {
   const id = window.location.hash.slice(1);
   if (!id) {
     await model.loadSearchResults('', true);
     ResultsView.render([], true);
+  }
+};
+const controlClearPagination = function () {
+  const id = window.location.hash.slice(1);
+  if (!id) {
+    PaginationView.render({next:false, prev:false});
   }
 };
 
@@ -91,7 +97,7 @@ const controlBookmarks = function () {
 const registerHandlers = function () {
   searchView.addHandlerSearch(controlSearchResults);
   PaginationView.addHandlerPagination(controlPagination);
-  movieView.addHandlerRender(controlMovies, controlCleanResults);
+  movieView.addHandlerRender(controlMovies, controlClearResults, controlClearPagination);
   movieView.addHandlerBookmark(controlToggleBookmark);
   BookmarkView.addHandlerRender(controlBookmarks);
 };
