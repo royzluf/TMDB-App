@@ -60,19 +60,6 @@ const controlSearchResults = async function () {
   BookmarkView.update(model.getBookmarks());
 };
 
-const controlClearResults = async function () {
-  const id = window.location.hash.slice(1);
-  if (!id) {
-    await model.loadSearchResults('', true);
-    ResultsView.render([], true);
-  }
-};
-const controlClearPagination = function () {
-  const id = window.location.hash.slice(1);
-  if (!id) {
-    PaginationView.render({next:false, prev:false});
-  }
-};
 
 const controlPagination = function (pageNumber = 1) {
   // Render results
@@ -92,6 +79,20 @@ const controlToggleBookmark = function () {
 
 const controlBookmarks = function () {
   BookmarkView.render(model.getBookmarks());
+};
+
+const controlClearResults = async function () {
+  const id = window.location.hash.slice(1);
+  if (!id) {
+    await model.loadSearchResults('', true);
+    ResultsView.render([], true);
+  }
+};
+const controlClearPagination = function () {
+  const id = window.location.hash.slice(1);
+  if (!id) {
+    PaginationView.render({next:false, prev:false});
+  }
 };
 
 const registerHandlers = function () {
