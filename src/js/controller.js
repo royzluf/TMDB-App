@@ -92,7 +92,6 @@ const controlClearPagination = function () {
   if (!id) {
     PaginationView.render({ next: false, prev: false });
   }
-  const x = 3;
 };
 
 const registerHandlers = function () {
