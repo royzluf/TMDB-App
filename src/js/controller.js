@@ -1,11 +1,11 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-import * as model from './model.js';
-import searchView from './views/searchView.js';
-import ResultsView from './views/resultsView';
-import PaginationView from './views/paginationView';
-import movieView from './views/movieView';
-import BookmarkView from './views/bookmarkView';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import * as model from "./model.js";
+import searchView from "./views/searchView.js";
+import ResultsView from "./views/resultsView";
+import PaginationView from "./views/paginationView";
+import movieView from "./views/movieView";
+import BookmarkView from "./views/bookmarkView";
 
 /////////////////////////////////////////////////////////////
 
@@ -60,7 +60,6 @@ const controlSearchResults = async function () {
   BookmarkView.update(model.getBookmarks());
 };
 
-
 const controlPagination = function (pageNumber = 1) {
   // Render results
   const resultsToDisplay = model.getResultsPage(pageNumber);
@@ -84,21 +83,26 @@ const controlBookmarks = function () {
 const controlClearResults = async function () {
   const id = window.location.hash.slice(1);
   if (!id) {
-    await model.loadSearchResults('', true);
+    await model.loadSearchResults("", true);
     ResultsView.render([], true);
   }
 };
 const controlClearPagination = function () {
   const id = window.location.hash.slice(1);
   if (!id) {
-    PaginationView.render({next:false, prev:false});
+    PaginationView.render({ next: false, prev: false });
   }
+  const x = 3;
 };
 
 const registerHandlers = function () {
   searchView.addHandlerSearch(controlSearchResults);
   PaginationView.addHandlerPagination(controlPagination);
-  movieView.addHandlerRender(controlMovies, controlClearResults, controlClearPagination);
+  movieView.addHandlerRender(
+    controlMovies,
+    controlClearResults,
+    controlClearPagination
+  );
   movieView.addHandlerBookmark(controlToggleBookmark);
   BookmarkView.addHandlerRender(controlBookmarks);
 };
